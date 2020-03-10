@@ -53,7 +53,7 @@ export class LoginComponent extends React.Component<ILoginProps, ILoginState>{
     render() {
         return (
             this.props.user.userId ? 
-            <Redirect to='/clicker'/>
+            <Redirect to='/user-info'/>
             :
             <> 
             {/* a react Fragment, disappears on render */}

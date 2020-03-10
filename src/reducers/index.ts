@@ -1,6 +1,7 @@
 import { combineReducers } from "redux";
 import { User } from "../models/User";
 import { loginReducer } from "./login-reducer";
+import { usersReducer } from "./users-reducer";
 //import { usersReducer } from "./users-reducer";
 
 //make interfaces for each "piece" of state
@@ -17,11 +18,11 @@ export interface IUsersState{
 //define all of the pieces of state
 export interface IState{
     login:ILoginState
-    //users:IUsersState
+    users:IUsersState
 }
 
 //turn all individual pieces of state into a single state
 export const state = combineReducers<IState>({
     login: loginReducer,
-    //users: usersReducer,
+    users: usersReducer,
 })

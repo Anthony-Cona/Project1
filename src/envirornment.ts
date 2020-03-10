@@ -5,7 +5,7 @@ const devEnvironment={
 }
 
 const prodEnvironment={
-    project0BaseUrl:'ec2-18-222-178-46.us-east-2.compute.amazonaws.com:2002'
+    project0BaseUrl:'http://ec2-18-222-178-46.us-east-2.compute.amazonaws.com:2002'
 }
 
 export let environment = prodEnvironment

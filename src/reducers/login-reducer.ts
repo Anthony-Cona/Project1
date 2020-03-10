@@ -32,7 +32,8 @@ export const loginReducer = (state = initialState, action:AnyAction) => {
         case loginTypes.INTERNAL_SERVER:{
             return {
                 ...state,
-                errorMessage:'Something went wrong. Cors'
+                
+                errorMessage:`${state.user.userName}Something went wrong. Cors`
             }
         }
         default:

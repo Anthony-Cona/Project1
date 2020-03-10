@@ -19,7 +19,7 @@ export async function project0Login(username: string, password: string): Promise
             throw new BadCredentialError()
         }
 
-        return await response.data
+        return response.data
     } catch (e) {
         if(e.status === 404){
             throw e

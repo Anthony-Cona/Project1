@@ -1,5 +1,5 @@
 import { Dispatch } from "redux";
-import { project0Login } from "../remote/login-project0";
+import { project0Login } from "../remote/project0-login-remote";
 
 export const loginTypes = {
     SUCCESSFUL_LOGIN : 'SUCCESSFUL_LOGIN',
