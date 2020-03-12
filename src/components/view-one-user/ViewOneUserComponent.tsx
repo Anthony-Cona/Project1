@@ -15,7 +15,7 @@ interface IViewOneUserProps {
 
 export class ViewOneUserComponent extends React.Component<IViewOneUserProps, any>{
 
-    
+
     submitId = async (e: SyntheticEvent) => {
         e.preventDefault()
         this.props.getOneUserActionMapper(this.state.viewUserId)
@@ -35,19 +35,19 @@ export class ViewOneUserComponent extends React.Component<IViewOneUserProps, any
                     <Form onSubmit={this.submitId}>
                         <FormGroup>
                             <Label for="searchId">ID Value</Label>
-                            <Input onChange={this.updateId} type="number" placeholder="Enter a user Id" required/>
+                            <Input onChange={this.updateId} type="number" placeholder="Enter a user Id" required />
                         </FormGroup>
                         <Button>Submit</Button>
                     </Form>
                     :
                     <>
                         <UserInfoComponent currentUser={this.props.viewUser} key={this.props.viewUser.userId} />
-                        <Button onClick={this.props.resetOneUserActionMapper} value = {0}>Search Again?</Button>
+                        <Button onClick={this.props.resetOneUserActionMapper}>Search Again?</Button>
                     </>
-                            )
+            )
         } else {
             return (
-                            <Redirect to='/user-info' />
+                <Redirect to='/user-info' />
             )
         }
     }

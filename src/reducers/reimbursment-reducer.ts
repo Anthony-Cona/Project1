@@ -4,7 +4,7 @@ import { IReimbursementState } from ".";
 import { Reimbursement } from "../models/Reimbursement";
 
 
-const initialState:IReimbursementState = {
+const initialState: IReimbursementState = {
     allReimbursements:[],
     curretnReimbursement: new Reimbursement(0,0,0,"","","",0,0,0),
     errorMessage:''
@@ -23,7 +23,9 @@ export const reimbursementReducer = (state = initialState, action:AnyAction ) =>
                 ...state,
                 errorMessage:'Failed to Retrieve Reimbursements'
             }
-        } 
+        } case reimbursementTypes.RESET_SEARCH:{
+            return initialState
+        }
         default:
             return state;
     }

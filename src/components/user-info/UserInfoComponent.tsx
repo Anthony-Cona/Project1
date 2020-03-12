@@ -14,18 +14,18 @@ export class UserInfoComponent extends React.Component<IUserInfoProps, any>{
 
         if (this.props.currentUser.userId) {
             return (
-                <Card>
-                    <CardTitle>{this.props.currentUser.firstName} {this.props.currentUser.lastName}</CardTitle>
-                    <CardText>{`Username: ${this.props.currentUser.userName}`}</CardText>
-                    <CardText>{`User Email: ${this.props.currentUser.email}`}</CardText>
-                    <CardText>{`Role: ${this.props.currentUser.role.role}`}</CardText>
-                </Card>
+                    <Card>
+                        <CardTitle>{this.props.currentUser.firstName} {this.props.currentUser.lastName}</CardTitle>
+                        <CardText>{`Username: ${this.props.currentUser.userName}`}</CardText>
+                        <CardText>{`User Email: ${this.props.currentUser.email}`}</CardText>
+                        <CardText>{`Role: ${this.props.currentUser.role.role}`}</CardText>
+                    </Card>
             )
         }
         else {
             return (
                 <Redirect to='/login' />
             )
-        }        
+        }
     }
 }

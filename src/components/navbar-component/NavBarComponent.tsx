@@ -50,7 +50,7 @@ const NavBarComponent = (props: any) => {
                 </DropdownItem>
                 <DropdownItem divider/>
                 <DropdownItem>
-                  <Link to='/reimbursements/states'>Reimbursements</Link>
+                  <Link to='/reimbursements/author/userId'>Reimbursements By Id</Link>
                 </DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown>

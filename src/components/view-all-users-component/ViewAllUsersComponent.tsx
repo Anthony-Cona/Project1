@@ -43,7 +43,7 @@ export class ViewAllUsersComponent extends React.Component<IViewAllUsersProps,an
                 {userDisplay}
             </CardDeck>
             :
-            <Redirect to='/'/>
+            <Redirect to='/user-info'/>
         )
     }
 }

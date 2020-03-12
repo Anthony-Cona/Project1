@@ -9,7 +9,7 @@ import  LoginComponent  from './components/login-component/LoginContainer';
 import  UserInfoComponent  from './components/user-info/UserInfoContainer';
 import  ViewAllUsersComponent  from './components/view-all-users-component/ViewAllUsersContainer';
 import  ViewOneUserComponent from './components/view-one-user/ViewOneUserContainer';
-import  ViewAllReimbursementsComponent from './components/reimbursements-component/ViewAllReimbursementsContainer';
+import  ViewAllReimbursementsComponent from './components/reimbursements-component/ViewAllReimbursementsByIdContainer';
 
 
 function App() {
@@ -23,7 +23,7 @@ function App() {
             <Route path='/user-info' component={UserInfoComponent}/>
             <Route path='/users/:id' component={ViewOneUserComponent}/>
             <Route path='/users' component={ViewAllUsersComponent}/>
-            <Route path='/reimbursements' component={ViewAllReimbursementsComponent}/>
+            <Route path='/reimbursements/author/userId' component={ViewAllReimbursementsComponent}/>
           </Switch>
         </Router>
       </Provider>
