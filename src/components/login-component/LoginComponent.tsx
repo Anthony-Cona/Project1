@@ -2,7 +2,6 @@ import React, { SyntheticEvent } from 'react'
 import { Form, FormGroup, Label, Col, Input, Button } from 'reactstrap'
 import { User } from '../../models/User'
 import { Redirect } from 'react-router'
-import {project0LoginActionMapper} from '../../action-mappers/login-action-mapper'
 
 
 interface ILoginProps{
@@ -59,7 +58,7 @@ export class LoginComponent extends React.Component<ILoginProps, ILoginState>{
             {/* a react Fragment, disappears on render */}
                 <Form onSubmit={this.submitLogin}>
                     <FormGroup row>
-                        <Label for="username" sm={2}>Email</Label>
+                        <Label for="username" sm={2}>username</Label>
                         <Col sm={6}>
                             <Input onChange={this.updateUser} value={this.state.username} type="text" name="username" id="username" placeholder="your username" required />
                         </Col>
