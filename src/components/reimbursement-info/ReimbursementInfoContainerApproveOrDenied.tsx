@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { ReimbursementInfoComponent } from "./ReimbursementInfoComponent";
+import { ReimbursementInfoComponentApproveOrDenied } from "./ReimbursementInfoComponentApproveOrDenied";
 import { IState } from "../../reducers";
 
 
@@ -10,5 +10,4 @@ const mapStateToProps = (state:IState) => {
     }
 }
 
-
-export default connect(mapStateToProps)(ReimbursementInfoComponent)
+export default connect(mapStateToProps)(ReimbursementInfoComponentApproveOrDenied)

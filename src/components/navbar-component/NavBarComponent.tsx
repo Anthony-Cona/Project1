@@ -52,6 +52,9 @@ const NavBarComponent = (props: any) => {
                 <DropdownItem>
                   <Link to='/reimbursements/author/userId'>Reimbursements By Id</Link>
                 </DropdownItem>
+                <DropdownItem>
+                  <Link to='/reimbursements/status'>Reimbursements By Status</Link>
+                </DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown>
           </Nav>
