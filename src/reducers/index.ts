@@ -27,6 +27,7 @@ export interface IReimbursementState{
     allReimbursements: Reimbursement[]
     curretnReimbursement: Reimbursement
     errorMessage: string
+    checked: Boolean
 }
 
 //define all of the pieces of state

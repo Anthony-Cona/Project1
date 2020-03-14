@@ -7,7 +7,8 @@ import { Reimbursement } from "../models/Reimbursement";
 const initialState: IReimbursementState = {
     allReimbursements:[],
     curretnReimbursement: new Reimbursement(0,0,0,"","","",0,0,0),
-    errorMessage:''
+    errorMessage:'',
+    checked: false
 }
 
 export const reimbursementReducer = (state = initialState, action:AnyAction ) =>{

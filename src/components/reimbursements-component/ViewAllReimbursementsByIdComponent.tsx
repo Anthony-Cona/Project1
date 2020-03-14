@@ -15,21 +15,25 @@ interface IViewAllReimbursementsProps {
     errorMessage: string
     getReimbursementsByIdActionMapper: (id: number) => void
     resetReimbursementsActionMapper: () => void
+    checked: Boolean
 }
 
 
 export class ViewAllReimbursementsByIdComponent extends React.Component<IViewAllReimbursementsProps, any>{
+
+    constructor(props: any) {
+        super(props)
+        this.getReimbursemntForUser(this.props.currentUser.userId)
+    }
 
     // componentDidMount(){
     //     // check to see if we already have users (redux store)
     //     if(this.props.allReimbursements.length !== 0){
     //         //return
     //         //make sure they are admin
-    //     }else if(this.props.currentUser.role.role === 'admin'||this.props.currentUser.role.role === 'finance-manager'){
-    //         if(this.props.viewUserReimbursement){
-    //         console.log('call getAll users mapper?');
-    //         this.props.getReimbursementsByIdActionMapper(this.props.viewUserReimbursement)
-    //         }
+    //     }else if(this.props.currentUser.role.role === 'user'){
+    //         this.getReimbursemntForUser(this.props.currentUser.userId)
+
     //     }else {
     //         //they weren't admin so do nothing
     //         //return
@@ -39,6 +43,16 @@ export class ViewAllReimbursementsByIdComponent extends React.Component<IViewAll
     submitId = async (e: SyntheticEvent) => {
         e.preventDefault()
         this.props.getReimbursementsByIdActionMapper(this.state.viewUserReimbursementId)
+    }
+
+    getReimbursemntForUser = async (e: number) => {
+
+        this.props.getReimbursementsByIdActionMapper(e)
+
+        this.setState({
+            viewUserReimbursementId: e,
+        })
+
     }
 
     updateId = (e: any) => {
@@ -70,6 +84,15 @@ export class ViewAllReimbursementsByIdComponent extends React.Component<IViewAll
                         </CardDeck>
                         <Button onClick={this.props.resetReimbursementsActionMapper}>Search Again?</Button>
                     </>
+            )
+        } else if (this.props.currentUser.role.role === 'user') {
+            return (
+                this.props.allReimbursements.length ?
+                    <CardDeck elementsPerRow={4}>
+                        {reimbursementDisplay}
+                    </CardDeck>
+                    :
+                    <h1>You have no Reimbursements</h1>
             )
         } else {
             return (
