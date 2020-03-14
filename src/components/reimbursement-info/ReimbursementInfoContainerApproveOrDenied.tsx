@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import { ReimbursementInfoComponentApproveOrDenied } from "./ReimbursementInfoComponentApproveOrDenied";
 import { IState } from "../../reducers";
-
+import { updateReimbursementToApprovedOrDeniedActionMapper } from "../../action-mappers/view-reimbursement-action-mappers"
 
 
 const mapStateToProps = (state:IState) => {
@@ -10,4 +10,8 @@ const mapStateToProps = (state:IState) => {
     }
 }
 
-export default connect(mapStateToProps)(ReimbursementInfoComponentApproveOrDenied)
+const mapDispatchToProps = {
+    updateReimbursementToApprovedOrDeniedActionMapper,
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(ReimbursementInfoComponentApproveOrDenied)

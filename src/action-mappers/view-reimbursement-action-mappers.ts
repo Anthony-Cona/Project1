@@ -50,6 +50,23 @@ export const getReimbursementsByStatusActionMapper = (id:number) => async (dispa
     //function completes
 }
 
+export const updateReimbursementToApprovedOrDeniedActionMapper = (reimbursement:Reimbursement) => async (dispatch:Dispatch) => {
+    try {
+        let updatedReimbursement = await project0UpdateReimbursement(reimbursement)
+
+        dispatch({
+            type: reimbursementTypes.RETURN_UPDATED_REIMBURSEMENT,
+            payload:{
+                updatedReimbursement
+            }
+        })
+    } catch (e) {
+        dispatch({
+            type:reimbursementTypes.FAILED_TO_RETRIEVE_REIMBURSEMENTS
+        })
+    }
+}
+
 export const resetReimbursementsActionMapper = () => {
     return{
         type:reimbursementTypes.RESET_SEARCH

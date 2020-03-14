@@ -1,16 +1,16 @@
-import React, { SyntheticEvent } from 'react'
+import React from 'react'
 import { Card, CardTitle, CardText, Button, ButtonGroup } from 'reactstrap'
 import { Redirect } from 'react-router'
 import { Reimbursement } from '../../models/Reimbursement'
 
 interface IReimbursementInfoProps {
     currentReimbursement: Reimbursement
+    approveReimbursement: (e:any) => void
+    denyReimbursement: (e:any)=>void
 }
 
 
 export class ReimbursementInfoComponentApproveOrDenied extends React.Component<IReimbursementInfoProps, any>{
-
-    
 
     render() {
 
@@ -22,8 +22,8 @@ export class ReimbursementInfoComponentApproveOrDenied extends React.Component<I
                     <CardText>{`Date Submitted: ${this.props.currentReimbursement.dateSubmitted}`}</CardText>
                     <CardText>{`Status: ${this.props.currentReimbursement.status}`}</CardText>
                     <ButtonGroup>
-                        <Button color="success">Approve</Button>
-                        <Button color="danger">Deny</Button>
+                        <Button onClick={this.props.approveReimbursement} color="success">Approve</Button>
+                        <Button onClick={this.props.denyReimbursement} color="danger">Deny</Button>
                     </ButtonGroup>
                 </Card>
             )

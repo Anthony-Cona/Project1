@@ -15,6 +15,7 @@ interface IViewAllReimbursementsStatusProps {
     errorMessage: string
     getReimbursementsByStatusActionMapper: (id: number) => void
     resetReimbursementsActionMapper: () => void
+    updateReimbursementToApprovedOrDeniedActionMapper: (reimbursement: Reimbursement) => void
 }
 
 
@@ -32,16 +33,59 @@ export class ViewAllReimbursementsByStatusComponent extends React.Component<IVie
         })
     }
 
+    approveReimbursement = async (e: Reimbursement) => {
+        // e.preventDefault()    
+        e.status = 2
+        e.resolver = this.props.currentUser.userId
+        this.props.updateReimbursementToApprovedOrDeniedActionMapper(e)
+
+        setTimeout(() => {
+            this.setState({
+                allReimbursements: this.props.getReimbursementsByStatusActionMapper(1) 
+            })
+        }, 100);
+
+        setTimeout(()=>{
+            if(this.props.allReimbursements.length === 1){
+                this.props.resetReimbursementsActionMapper()
+            }
+        }, 300);
+    }
+
+    denyReimbursement = async (e: Reimbursement) => {
+        // e.preventDefault()    
+        e.status = 3
+        e.resolver = this.props.currentUser.userId
+        this.props.updateReimbursementToApprovedOrDeniedActionMapper(e)
+
+        setTimeout(() => {
+            this.setState({
+                allReimbursements: this.props.getReimbursementsByStatusActionMapper(1),
+                
+            })
+        }, 100);
+
+        setTimeout(()=>{
+            if(this.props.allReimbursements.length === 1){
+                this.props.resetReimbursementsActionMapper()
+            }
+        }, 300);
+    }
+
+
     render() {
+
+        
+
         let reimbursementDisplay
         this.props.allReimbursements.length && this.props.allReimbursements[0].status === 1 ?
-        reimbursementDisplay = this.props.allReimbursements.map((ele) => {
-            return <ReimbursementInfoComponentApproveOrDenied currentReimbursement={ele} key={ele.reimbursementId} />
-        })
-        :
-        reimbursementDisplay = this.props.allReimbursements.map((ele) => {
-            return <ReimbursementInfoComponent currentReimbursement={ele} key={ele.reimbursementId} />
-        })
+            reimbursementDisplay = this.props.allReimbursements.map((ele) => {
+                return <ReimbursementInfoComponentApproveOrDenied denyReimbursement={() => this.denyReimbursement(ele)} approveReimbursement={() => this.approveReimbursement(ele)} currentReimbursement={ele} key={ele.reimbursementId} />
+            })
+            :
+            reimbursementDisplay = this.props.allReimbursements.map((ele) => {
+                return <ReimbursementInfoComponent currentReimbursement={ele} key={ele.reimbursementId} />
+            })
         console.log(this.props.allReimbursements)
 
         if (this.props.currentUser.role.role === 'admin' || this.props.currentUser.role.role === 'finance-manager') {
@@ -53,24 +97,24 @@ export class ViewAllReimbursementsByStatusComponent extends React.Component<IVie
                             <FormGroup tag="fieldset" >
                                 <FormGroup check>
                                     <Label check>
-                                        <Input type="radio" onChange={this.updateStatus} name="radio1" value={1} required/>{'Pending'}
+                                        <Input type="radio" onChange={this.updateStatus} name="radio1" value={1} required />{'Pending'}
                                     </Label>
                                 </FormGroup>
                                 <FormGroup check>
                                     <Label check>
-                                        <Input type="radio" onChange={this.updateStatus} name="radio1" value={2} required/>{'Accepted'}
+                                        <Input type="radio" onChange={this.updateStatus} name="radio1" value={2} required />{'Accepted'}
                                     </Label>
                                 </FormGroup>
                                 <FormGroup check>
                                     <Label check>
-                                        <Input type="radio" onChange={this.updateStatus} name="radio1" value={3} required/>{'Declined'}
+                                        <Input type="radio" onChange={this.updateStatus} name="radio1" value={3} required />{'Declined'}
                                     </Label>
                                 </FormGroup>
                             </FormGroup>
                         </FormGroup>
                         <Button>Submit</Button>
                     </Form>
-                    :
+                    :                    
                     <>
                         <CardDeck elementsPerRow={4}>
                             {reimbursementDisplay}
@@ -84,4 +128,5 @@ export class ViewAllReimbursementsByStatusComponent extends React.Component<IVie
             )
         }
     }
+    
 }

@@ -1,7 +1,6 @@
 import { InternalServerError } from "../errors/InternalServerError"
 import { project0Client } from "./project0-client"
 import { Reimbursement } from "../models/Reimbursement"
-import { reimbursementTypes } from "../action-mappers/view-reimbursement-action-mappers"
 
 
 export const project0GetReimbursementById = async (id:number) => {
