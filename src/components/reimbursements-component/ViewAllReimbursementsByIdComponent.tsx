@@ -23,8 +23,10 @@ export class ViewAllReimbursementsByIdComponent extends React.Component<IViewAll
 
     constructor(props: any) {
         super(props)
+        if(this.props.currentUser.role.role==='user'){
         this.getReimbursemntForUser(this.props.currentUser.userId)
     }
+}
 
     // componentDidMount(){
     //     // check to see if we already have users (redux store)
@@ -96,7 +98,7 @@ export class ViewAllReimbursementsByIdComponent extends React.Component<IViewAll
             )
         } else {
             return (
-                <Redirect to='/user-info' />
+                <Redirect to='/user-info' />      
             )
         }
     }

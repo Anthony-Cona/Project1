@@ -30,11 +30,19 @@ export class ViewAllUsersComponent extends React.Component<IViewAllUsersProps,an
         }
     }
 
+    redirect(){
+        return(
+            <Redirect to='/editUser'/>
+        )
+    }
+
     render(){
         //turn array of users into display components
+        
         let userDisplay = this.props.allUsers.map((ele)=>{
             return <UserInfoComponent currentUser={ele} key={ele.userId}/>
         })
+
         console.log(this.props.currentUser.role)
         return(
             // check for role or redirect

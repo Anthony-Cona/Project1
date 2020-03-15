@@ -11,6 +11,7 @@ import  ViewAllUsersComponent  from './components/view-all-users-component/ViewA
 import  ViewOneUserComponent from './components/view-one-user/ViewOneUserContainer';
 import  ViewAllReimbursementsByIdComponent from './components/reimbursements-component/ViewAllReimbursementsByIdContainer';
 import  ViewAllReimbursementsByStatusComponent from './components/reimbursements-component/ViewAllReimbursementsByStatusContainer';
+import  EditUserByIdComponent  from './components/edit-user-component/editUserByIdContainer';
 
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
             <Route path='/users' component={ViewAllUsersComponent}/>
             <Route path='/reimbursements/author/userId' component={ViewAllReimbursementsByIdComponent}/>
             <Route path='/reimbursements/status' component={ViewAllReimbursementsByStatusComponent}/>
+            <Route path='/edit-user' component={EditUserByIdComponent}/>
           </Switch>
         </Router>
       </Provider>
