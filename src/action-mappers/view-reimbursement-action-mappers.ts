@@ -1,11 +1,12 @@
 import { Dispatch } from "redux";
-import { project0GetReimbursementById, project0GetReimbursementByStatus, project0UpdateReimbursement } from "../remote/project0-reimbursement-remote";
+import { project0GetReimbursementById, project0GetReimbursementByStatus, project0UpdateReimbursement, project0CreateReimbursement } from "../remote/project0-reimbursement-remote";
 import { Reimbursement } from "../models/Reimbursement";
 
 export const reimbursementTypes = {
     GET_ALL_REIMBURESMENTS: 'GET_REIMBURSEMENT_BY_ID',
     FAILED_TO_RETRIEVE_REIMBURSEMENTS:'FAILED_TO_RETRIEVE_REIMBURSEMENTS',
     RETURN_UPDATED_REIMBURSEMENT: 'RETURN_UPDATED_REIMBURSEMENT',
+    CREATED_NEW_REIMBURSEMENT: 'CREATED_NEW_REIMBURSEMENT',
     RESET_SEARCH: 'RESET_SEARCH'
 }
 
@@ -58,6 +59,23 @@ export const updateReimbursementToApprovedOrDeniedActionMapper = (reimbursement:
             type: reimbursementTypes.RETURN_UPDATED_REIMBURSEMENT,
             payload:{
                 updatedReimbursement
+            }
+        })
+    } catch (e) {
+        dispatch({
+            type:reimbursementTypes.FAILED_TO_RETRIEVE_REIMBURSEMENTS
+        })
+    }
+}
+
+export const createNewReimbursementActionMapper = (author:number,amount:number,description:string,type:number) => async (dispatch:Dispatch) => {
+    try {
+        let newReimbursement = await project0CreateReimbursement(author,amount,description,type)
+
+        dispatch({
+            type: reimbursementTypes.CREATED_NEW_REIMBURSEMENT,
+            payload:{
+                newReimbursement
             }
         })
     } catch (e) {

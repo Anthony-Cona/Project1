@@ -15,7 +15,6 @@ const mapDispatchToProps = {
     getOneUserActionMapper,
     updateUserActionMapper,
     resetOneUserActionMapper
-
 }
 
 export default connect(mapStateToProps,mapDispatchToProps)(EditUserByIdComponent)

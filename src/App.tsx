@@ -12,7 +12,7 @@ import  ViewOneUserComponent from './components/view-one-user/ViewOneUserContain
 import  ViewAllReimbursementsByIdComponent from './components/reimbursements-component/ViewAllReimbursementsByIdContainer';
 import  ViewAllReimbursementsByStatusComponent from './components/reimbursements-component/ViewAllReimbursementsByStatusContainer';
 import  EditUserByIdComponent  from './components/edit-user-component/editUserByIdContainer';
-
+import  CreateReimbursementComponent from './components/create-reimbursement/createReimbursementContainer';
 
 function App() {
   return (
@@ -28,6 +28,7 @@ function App() {
             <Route path='/reimbursements/author/userId' component={ViewAllReimbursementsByIdComponent}/>
             <Route path='/reimbursements/status' component={ViewAllReimbursementsByStatusComponent}/>
             <Route path='/edit-user' component={EditUserByIdComponent}/>
+            <Route path='/create-reimbursement' component={CreateReimbursementComponent}/>
           </Switch>
         </Router>
       </Provider>

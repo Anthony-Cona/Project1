@@ -33,6 +33,7 @@ export interface IReimbursementState{
     allReimbursements: Reimbursement[]
     curretnReimbursement: Reimbursement
     errorMessage: string
+    newReimbursement:Reimbursement
 }
 
 //define all of the pieces of state

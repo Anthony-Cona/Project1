@@ -42,4 +42,17 @@ export const project0UpdateReimbursement = async (reimbursement:Reimbursement) =
     }
 }
 
-
+export const project0CreateReimbursement =async (author:number,amount:number,description:string,type:number) => {
+   let newData = {author,amount,description,type}
+   
+    try {
+        let response = await project0Client.post(`reimbursements`,newData)
+        if(response.status === 201){
+            return response.data
+        }else{
+            throw new InternalServerError()
+        }
+    } catch (e) {
+        throw new InternalServerError()
+    }
+}

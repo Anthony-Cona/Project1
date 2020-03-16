@@ -8,6 +8,7 @@ const initialState: IReimbursementState = {
     allReimbursements:[],
     curretnReimbursement: new Reimbursement(0,0,0,"","","",0,0,0),
     errorMessage:'',
+    newReimbursement:  new Reimbursement(0,0,0,"","","",0,0,0)
 }
 
 export const reimbursementReducer = (state = initialState, action:AnyAction ) =>{
@@ -23,7 +24,12 @@ export const reimbursementReducer = (state = initialState, action:AnyAction ) =>
                 ...state,
                 errorMessage:'Failed to Retrieve Reimbursements'
             }
-        } case reimbursementTypes.RESET_SEARCH:{
+        }case reimbursementTypes.CREATED_NEW_REIMBURSEMENT: {
+            return{
+                ...state,
+                newReimbursement:action.payload.newReimbursement
+            }
+        }case reimbursementTypes.RESET_SEARCH:{
             return initialState
         }
         default:

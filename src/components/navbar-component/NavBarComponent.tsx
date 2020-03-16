@@ -34,7 +34,7 @@ const NavBarComponent = (props: any) => {
               <DropdownToggle nav caret>
                 Options
               </DropdownToggle>
-              <DropdownMenu middle>
+              <DropdownMenu>
                 <DropdownItem>
                   <Link to='/login'>Login</Link>
                 </DropdownItem>
@@ -47,6 +47,9 @@ const NavBarComponent = (props: any) => {
                 </DropdownItem>
                 <DropdownItem>
                   <Link to='/users/id'>View Specific User</Link>
+                </DropdownItem>
+                <DropdownItem>
+                  <Link to='/create-reimbursement'>Create a new Reimbursement</Link>
                 </DropdownItem>
                 <DropdownItem divider/>
                 <DropdownItem>
