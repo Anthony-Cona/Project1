@@ -58,18 +58,19 @@ export class CreateReimbursementComponent extends React.Component<ICreateReimbur
         return (
             <Form onSubmit={this.createReimbursement}>
                 <Row form>
+                <Col md={6}>
+                        <FormGroup>
+                            <Label for="description">Description</Label>
+                            <Input onChange={this.updateDescription} type="text" name="description" id="description" />
+                        </FormGroup>
+                    </Col>
                     <Col md={6}>
                         <FormGroup>
                             <Label for="amount">Amount</Label>
                             <Input onChange={this.updateAmount} type="number" name="amount" id="amount" step="0.01" />
                         </FormGroup>
                     </Col>
-                    <Col md={6}>
-                        <FormGroup>
-                            <Label for="description">Description</Label>
-                            <Input onChange={this.updateDescription} type="text" name="description" id="description" />
-                        </FormGroup>
-                    </Col>
+                
                 </Row>
                 <FormGroup>
                     <Label for="type">Type</Label>
